@@ -116,7 +116,7 @@ cd /var/lib/jenkins/workspace/<directory>
 sudo rm -rf node_modules
 
 
-# write the Dockerfile
+# Write the Dockerfile
 cd /var/lib/jenkins/workspace/<directory>
 
 sudo vim Dockerfile
@@ -128,7 +128,7 @@ sudo vim Dockerfile
 // :wq - to save and exit
 
 
-# build the image and run the image on port 3000 which has been exposed to 80 inside docker and nginx 
+# Build the image and run the image on port 3000 which has been exposed to 80 inside docker and nginx 
 sudo docker build -t docker_images .
 
 sudo docker run -p 3000:80 docker_images 
@@ -171,4 +171,4 @@ sudo docker exec -it 857c6b61f13b /bin/sh
 
 
 # Remove all the running containers and images along with networks and volumes before going to jenkins CI/CD automation
-sudo docker container prune -f && sudo docker stop $(sudo docker ps -aq) && sudo docker rm $(sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
+sudo docker container prune -f && sudo docker stop (sudo docker ps -aq) && sudo docker rm (sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes

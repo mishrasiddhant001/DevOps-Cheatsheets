@@ -28,11 +28,11 @@ sudo usermod -a -G jenkin $USER
 sudo systemctl restart jenkins
 
 
-# password for jenkins
+# Password for jenkins
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
-# create ssh keys for intergration and authorization
+# Create ssh keys for intergration and authorization
 ssh-keygen
 cd .ssh
 ls
@@ -40,7 +40,7 @@ cat id_rsa
 cat id_rsa.pub
 
 
-# ** install nodejs angular-cli and npm **
+# Install nodejs angular-cli and npm
 cd 
 sudo apt-get update
 sudo apt install nodejs npm
@@ -55,14 +55,15 @@ node -v
 npm -v
 
 
-# set-up localhost for testing 
+# Set-up localhost for testing 
 cd /var/lib/jenkins/workspace/rediscover_web_gce
 curl http://34.131.241.78:4200/
 ng serve --host 0.0.0.0
 
 
-# if you get error regarding authorization try these commands
+# If you get error regarding authorization try these commands
 sudo mkdir /var/lib/jenkins/workspace/<directory>/.angular
+
 sudo chmod -R 777 /var/lib/jenkins/workspace/<directory>/.angular
 
 

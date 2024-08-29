@@ -34,30 +34,47 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 # Create ssh keys for intergration and authorization
 ssh-keygen
+
 cd .ssh
+
 ls
+
 cat id_rsa
+
 cat id_rsa.pub
 
 
 # Install nodejs angular-cli and npm
 cd 
+
 sudo apt-get update
+
 sudo apt install nodejs npm
+
 sudo npm install -g @angular/cli
+
 sudo apt install build-essential
+
 sudo npm install -g typescript
+
 sudo apt-get install unzip -y
+
 curl -fsSL https://fnm.vercel.app/install | bash
+
 source ~/.bashrc
+
 fnm use --install-if-missing 22
+
 node -v
+
 npm -v
 
 
 # Set-up localhost for testing 
 cd /var/lib/jenkins/workspace/rediscover_web_gce
+
 curl http://34.131.241.78:4200/
+
 ng serve --host 0.0.0.0
 
 
@@ -69,8 +86,11 @@ sudo chmod -R 777 /var/lib/jenkins/workspace/<directory>/.angular
 
 # docker installation
 sudo apt update
+
 sudo apt install docker.io
+
 docker --version
+
 sudo systemctl status docker
 
 
@@ -80,16 +100,19 @@ sudo usermod -aG docker $USER
 
 # add jenkins to docker group
 sudo usermod -aG docker jenkins
+
 sudo systemctl restart jenkins
 
 
 # check for running docker images and if unecessary exists
 sudo docker images
+
 sudo docker container prune -f && sudo docker stop $(sudo docker ps -aq) && sudo docker rm $(sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
 
 
 # Remove unecessary node_modules before creating Dockerfile from workspace
 cd /var/lib/jenkins/workspace/<directory>
+
 sudo rm -rf node_modules
 
 
@@ -107,6 +130,7 @@ sudo vim Dockerfile
 
 # build the image and run the image on port 3000 which has been exposed to 80 inside docker and nginx 
 sudo docker build -t docker_images .
+
 sudo docker run -p 3000:80 docker_images 
 
 

@@ -124,8 +124,8 @@ sudo vim Dockerfile
   Docker commands
 }
 
-# I - for insert
-# :wq - to save and exit
+// I - for insert
+// :wq - to save and exit
 
 
 # build the image and run the image on port 3000 which has been exposed to 80 inside docker and nginx 

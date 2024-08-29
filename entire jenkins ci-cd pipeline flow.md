@@ -1,33 +1,38 @@
-# 1. Install Java
+# install java
 sudo apt install openjdk-17-jdk
 java --version
 sudo apt update
 
-# 2. Install Jenkins
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 
+# install jenkins
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
 sudo apt-get install jenkins
-sudo apt-get update
+sudo apt-get update 
 
-# 3. update and restart jenkins after adding it to $USER group
+
+# update and restart jenkins after adding it to $USER group
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
-sudo usermod -a -G jenkins $USER
+sudo usermod -a -G jenkin $USER
 sudo systemctl restart jenkins
 
-# 4. Retrieve Jenkins Password
+
+# password for jenkins
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-# 5. Create SSH Keys for Integration and Authorization
+
+# create ssh keys for intergration and authorization
 ssh-keygen
 cd .ssh
 ls
 cat id_rsa
 cat id_rsa.pub
 
-# 6. Install Node.js, Angular CLI, and npm
+
+# ** install nodejs angular-cli and npm **
+cd 
 sudo apt-get update
 sudo apt install nodejs npm
 sudo npm install -g @angular/cli
@@ -40,72 +45,96 @@ fnm use --install-if-missing 22
 node -v
 npm -v
 
-# 7. Set Up Localhost for Testing
+
+# set-up localhost for testing 
 cd /var/lib/jenkins/workspace/rediscover_web_gce
 curl http://34.131.241.78:4200/
 ng serve --host 0.0.0.0
 
-# 8. Handle Authorization Errors
+
+# if you get error regarding authorization try these commands
 sudo mkdir /var/lib/jenkins/workspace/<directory>/.angular
 sudo chmod -R 777 /var/lib/jenkins/workspace/<directory>/.angular
 
-# 9. Docker Installation
+
+# docker installation
 sudo apt update
 sudo apt install docker.io
 docker --version
 sudo systemctl status docker
 
-# 10. Add Docker to $USER Group
+
+# add docker to $USER group
 sudo usermod -aG docker $USER
 
-# 11. Add Jenkins to Docker Group
+
+# add jenkins to docker group
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 
-# 12. Manage Docker Containers and Images
+
+# check for running docker images and if unecessary exists
 sudo docker images
 sudo docker container prune -f && sudo docker stop $(sudo docker ps -aq) && sudo docker rm $(sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
 
-# 13. Remove Unnecessary node_modules
+
+# Remove unecessary node_modules before creating Dockerfile from workspace
 cd /var/lib/jenkins/workspace/<directory>
 sudo rm -rf node_modules
 
-# 14. Create Dockerfile
+
+# write the Dockerfile
 cd /var/lib/jenkins/workspace/<directory>
+
 sudo vim Dockerfile
+{
+  Docker commands
+}
+
 # I - for insert
 # :wq - to save and exit
 
-# 15. Build and Run Docker Image
-sudo docker build -t docker_images .
-sudo docker run -p 3000:80 docker_images
 
-# 16. Clean Up Docker Containers and Images
+# build the image and run the image on port 3000 which has been exposed to 80 inside docker and nginx 
+sudo docker build -t docker_images .
+sudo docker run -p 3000:80 docker_images 
+
+
+# Remove all the running containers and images along with networks and volumes before going to jenkins CI/CD automation
 sudo docker container prune -f && sudo docker stop $(sudo docker ps -aq) && sudo docker rm $(sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
 
-# 17. Test Docker Container with curl
+
+# Send a GET request to the localhost on port 3000.
 curl http://localhost:3000/
 
-# 18. Install nmap Utility
+
+# Install the 'nmap' utility, which is used for network exploration and security auditing.
 sudo apt install nmap
 
-# 19. Scan Port 3000 with nmap
+
+# Use 'nmap' to scan port 3000 on the IP address 34.131.241.78 to check if the port is open.
 nmap -p 3000 34.131.241.78
 
-# 20. List Active Ports with netstat
+
+# Use 'netstat' to list all active listening and non-listening (server/client) ports and filter the output to show only those related to port 3000.
 netstat -tuln | grep 3000
 
-# 21. Check Firewall Rules with iptables
+
+# Use 'iptables' to list all the firewall rules and filter the output for entries related to port 3000.
 sudo iptables -L -n -v | grep 3000
 
-# 22. Test Service with curl
+
+# Send another GET request to the localhost on port 3000. This is likely done to check if the service is up after performing the previous steps.
 curl http://localhost:3000/
 
-# 23. Restart Docker Service
+
+# Restart the Docker service. This command is often used when containers or Docker services need to be refreshed.
 sudo systemctl restart docker
 
-# 24. Attach to Running Docker Container
+
+# Attach to the running Docker container with ID 857c6b61f13b and open an interactive shell session within it.
 sudo docker exec -it 857c6b61f13b /bin/sh
 
-# 25. Final Cleanup Before Jenkins CI/CD Automation
+
+# Remove all the running containers and images along with networks and volumes before going to jenkins CI/CD automation
 sudo docker container prune -f && sudo docker stop $(sudo docker ps -aq) && sudo docker rm $(sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes

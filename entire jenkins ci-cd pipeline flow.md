@@ -1,6 +1,8 @@
 # Install Java
 sudo apt install openjdk-17-jdk
+
 java --version
+
 sudo apt update
 
 
@@ -14,11 +16,15 @@ sudo apt-get install jenkins
 sudo apt-get update 
 
 
-# update and restart jenkins after adding it to $USER group
+# Update and restart jenkins after adding it to $USER group
 sudo systemctl enable jenkins
+
 sudo systemctl start jenkins
+
 sudo systemctl status jenkins
+
 sudo usermod -a -G jenkin $USER
+
 sudo systemctl restart jenkins
 
 

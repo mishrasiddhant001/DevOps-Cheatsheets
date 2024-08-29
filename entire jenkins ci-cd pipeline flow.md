@@ -1,4 +1,4 @@
-# Install Java
+#### Install Java
 sudo apt install openjdk-17-jdk
 
 java --version

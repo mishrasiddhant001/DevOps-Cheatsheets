@@ -1,4 +1,4 @@
-##!/bin/bash
+## !/bin/bash
 
 ## Set variables
 NEW_CONTAINER_NAME="rediscover_new"

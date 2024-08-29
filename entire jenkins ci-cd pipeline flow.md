@@ -5,11 +5,12 @@ sudo apt update
 
 # 2. Install Jenkins
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
 sudo apt-get install jenkins
 sudo apt-get update
 
-# 3. Update and Restart Jenkins
+# 3. update and restart jenkins after adding it to $USER group
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins

@@ -71,9 +71,10 @@ npm install -g typescript
 cd /var/lib/jenkins/workspace/rediscover_web_gce
 npm install --force
 
-### If you get error regarding authorization try these commands
+### If you get error regarding authorization "EACCESS" try these commands
 
 sudo chown -R `whoami` ~/.npm
+
 sudo chown -R `whoami` /usr/local/lib/node_modules
 
 OR

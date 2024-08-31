@@ -47,15 +47,6 @@ cat id_rsa.pub
 ## Install nodejs angular-cli and npm
 cd 
 
-sudo apt-get update
-
-sudo apt install nodejs npm
-
-sudo npm install -g @angular/cli
-
-sudo apt install build-essential
-
-sudo npm install -g typescript
 
 sudo apt-get install unzip -y
 
@@ -68,6 +59,12 @@ fnm use --install-if-missing 22
 node -v
 
 npm -v
+
+npm install -g @angular/cli
+
+sudo apt install build-essential
+
+npm install -g typescript
 
 
 ## Set-up localhost for testing 

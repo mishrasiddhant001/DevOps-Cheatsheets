@@ -69,16 +69,20 @@ npm install -g typescript
 
 ## Set-up localhost for testing 
 cd /var/lib/jenkins/workspace/rediscover_web_gce
+npm install --force
+
+### If you get error regarding authorization try these commands
+
+sudo chown -R `whoami` ~/.npm
+sudo chown -R `whoami` /usr/local/lib/node_modules
+
+OR
+
+sudo chown -R $(whoami) /var/lib/jenkins/workspace/plus\ tv
 
 curl http://34.131.241.78:4200/
 
 ng serve --host 0.0.0.0
-
-
-## If you get error regarding authorization try these commands
-sudo mkdir /var/lib/jenkins/workspace/<directory>/.angular
-
-sudo chmod -R 777 /var/lib/jenkins/workspace/<directory>/.angular
 
 
 ## docker installation

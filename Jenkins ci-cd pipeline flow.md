@@ -85,7 +85,7 @@ curl http://34.131.241.78:4200/
 
 ng serve --host 0.0.0.0
 
-
+### Remove node_modules before using docker files 
 ## docker installation
 sudo apt update
 

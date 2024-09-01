@@ -109,7 +109,12 @@ sudo systemctl restart jenkins
 ## Check for running docker images and if unecessary exists
 sudo docker images
 
-sudo docker container prune -f && sudo docker stop (sudo docker ps -aq) && sudo docker rm (sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
+sudo docker container prune -f \
+&& sudo docker image prune -a -f \
+&& sudo docker volume prune -f \
+&& sudo docker network prune -f \
+&& sudo docker system prune -a -f --volumes
+
 
 
 ## Remove unecessary node_modules before creating Dockerfile from workspace
@@ -173,4 +178,9 @@ sudo docker exec -it 857c6b61f13b /bin/sh
 
 
 ## Remove all the running containers and images along with networks and volumes before going to jenkins CI/CD automation
-sudo docker container prune -f && sudo docker stop (sudo docker ps -aq) && sudo docker rm (sudo docker ps -aq) && sudo docker image prune -a -f && sudo docker volume prune -f && sudo docker network prune -f && sudo docker system prune -a -f --volumes
+sudo docker container prune -f \
+&& sudo docker image prune -a -f \
+&& sudo docker volume prune -f \
+&& sudo docker network prune -f \
+&& sudo docker system prune -a -f --volumes
+

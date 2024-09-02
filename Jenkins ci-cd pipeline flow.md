@@ -23,7 +23,7 @@ sudo systemctl start jenkins
 
 sudo systemctl status jenkins
 
-sudo usermod -a -G jenkin $USER
+sudo usermod -a -G jenkins $USER
 
 sudo systemctl restart jenkins
 

@@ -1,23 +1,31 @@
-## Ngnix/default.conf for a website
+## Nginx Configuration for a Website
 
-cat<<EOF>server {
+Below is the `nginx/default.conf` configuration for the website `www.vizzytv.com`. This configuration sets up SSL, handles gzip compression, and redirects non-www traffic to the www version.
+
+### Nginx Configuration File
+
+```nginx
+# HTTPS server block for www.vizzytv.com
+server {
     server_name www.vizzytv.com;
 
     root /var/www/html/ReDiscover-WEB/dist/rediscover-ui;
-
     index index.html;
 
+    # Handle requests and fall back to index.html for SPA routing
     location / {
         try_files $uri $uri/ /index.html;
     }
 
+    # Custom error page for 404 errors
     error_page 404 /index.html;
 
+    # Deny access to hidden files
     location ~ /\.ht {
         deny all;
     }
 
-    # Optional: Configure gzip compression
+    # Optional: Configure gzip compression for better performance
     gzip on;
     gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
     gzip_proxied any;
@@ -27,20 +35,20 @@ cat<<EOF>server {
     gzip_http_version 1.1;
     gzip_min_length 256;
 
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/www.vizzytv.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/www.vizzytv.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    # SSL configuration (managed by Certbot)
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/www.vizzytv.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.vizzytv.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 }
 
+# Redirect HTTP traffic from non-www to www
 server {
     server_name vizzytv.com;
 
-    # Redirect all traffic from non-www to www
     return 301 https://www.vizzytv.com$request_uri;
     
     listen 80;
     listen [::]:80;
 }
-EOF

@@ -1,6 +1,3 @@
-cat <<EOF>
-
-
 server {
     server_name  dmoain.com www.dmoain.com;
 
@@ -44,4 +41,3 @@ server {
     listen 80;
     listen [::]:80;
 }
-EOF

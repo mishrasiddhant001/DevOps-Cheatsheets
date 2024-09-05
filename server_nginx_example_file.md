@@ -1,4 +1,6 @@
 cat <<EOF>
+
+
 server {
     server_name  dmoain.com www.dmoain.com;
 

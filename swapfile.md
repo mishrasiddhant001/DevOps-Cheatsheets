@@ -2,6 +2,7 @@
 # Swap File Management
 
 This guide outlines the steps to create and configure a swap file on a Linux system.
+```
 
 ### 1. Check current swap
 First, check the current swap usage:

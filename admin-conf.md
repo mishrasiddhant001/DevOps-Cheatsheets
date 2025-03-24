@@ -166,3 +166,51 @@ location /phpmyadmin {
 This configuration ensures that `murmur.admin.tvidservices.com` securely serves a PHP-based web application over HTTPS, with proper PHP processing and access to phpMyAdmin for database administration.
 
 --- 
+
+
+```
+ubuntu@ip-172-31-44-119:/etc/nginx$ cat sites-enabled/murmur-admin.conf
+server {
+    listen 80;
+    server_name murmur.admin.tvidservices.com;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name murmur.admin.tvidservices.com;
+
+    ssl_certificate /etc/letsencrypt/live/murmur.admin.tvidservices.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/murmur.admin.tvidservices.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+
+
+    root /var/www/html/MurMur/public;
+    index index.php index.html index.htm;
+
+    include snippets/phpmyadmin.conf;
+#    include snippets/jenkins.conf;
+#    access_log /var/log/nginx/jenkins.access.log;
+#    error_log /var/log/nginx/jenkins.error.log;
+
+    location / {
+        try_files $uri $uri/ /index.php?q=$uri&$args;
+        fastcgi_read_timeout 3600s;
+        fastcgi_send_timeout 3600s;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_read_timeout 3600s;
+        fastcgi_send_timeout 3600s;
+    }
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```

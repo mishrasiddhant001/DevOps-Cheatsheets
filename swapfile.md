@@ -43,4 +43,3 @@ swapon --show
 ### Notes:
 - Ensure that you have sufficient disk space for the swap file.
 - Adjust the `count` parameter in the `dd` command to change the swap size.
-```

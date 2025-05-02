@@ -1,6 +1,7 @@
-# GitLab CI/CD Artifacts Path Patterns
 
-This guide explains the possible ways to include files and directories in the `artifacts: paths:` section of your `.gitlab-ci.yml` file.
+# GitLab CI/CD Artifact Path Patterns
+
+This document outlines valid ways to define file and directory patterns for `artifacts: paths:` in GitLab CI/CD pipelines.
 
 ## ✅ Valid Patterns
 
@@ -61,15 +62,16 @@ artifacts:
 
 ## ❌ Invalid or Misleading Patterns
 
-| Pattern   | Issue                                  |
-| --------- | -------------------------------------- |
-| `/**/`    | Invalid syntax in GitLab globbing      |
-| `/*.html` | Only matches `.html` files at the root |
-| `/*`      | Only matches top-level files/folders   |
+| Pattern       | Issue                                       |
+|---------------|---------------------------------------------|
+| `/**/`        | Invalid syntax in GitLab globbing           |
+| `/*.html`     | Only matches `.html` files at the root      |
+| `/*`          | Only matches top-level files/folders        |
 
 ---
 
 ## ✅ Recommended Example for Frontend Project
+
 ```yaml
 artifacts:
   paths:
@@ -79,12 +81,12 @@ artifacts:
     - "**/*.css"
 ```
 
-This setup ensures all necessary static files and build outputs are included.
+This ensures that all relevant frontend build outputs are included as artifacts.
 
 ---
 
 ## Notes
 
-* `*` matches anything at one directory level
-* `**/*` matches anything recursively
-* Always test patterns if unsure — incorrect patterns can result in missing artifacts
+- `*` matches anything at one directory level
+- `**/*` matches anything recursively
+- Always test patterns if unsure — incorrect patterns can result in missing artifacts

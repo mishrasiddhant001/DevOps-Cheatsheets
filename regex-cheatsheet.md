@@ -128,3 +128,8 @@
 - `x`: Allow comments and whitespace in pattern
 - `e`: Evaluate replac­ement
 - `U`: Ungreedy mode
+
+## Greedy and Non-Greedy
+- `.*`: Greedy 
+- `.*?`: Non-Greedy 
+https://stackoverflow.com/questions/3075130/what-is-the-difference-between-and-regular-expressions

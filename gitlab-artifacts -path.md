@@ -60,13 +60,12 @@ artifacts:
 
 ---
 
-## ❌ Invalid or Misleading Patterns
+| Pattern           | What it matches                                                   | Notes                                                                                       |
+|-------------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| `qa-release/*`    | files & folders directly under `qa-release/` (one level)           | Does not recurse into sub‑folders                                                            |
+| `qa-release/**/*` | all files under `qa-release/` at any depth                         | • `**` (globstar) lets you recurse into sub‑dirs<br>• the trailing `/*` means “then one more path‑segment” (so it won’t match the root itself) |
+| `qa-release/**`   | all files & folders under `qa-release/` recursively (including empty dirs and the `qa-release/` folder itself) | • `**` by itself matches zero or more path segments, including “nothing”                      |
 
-| Pattern       | Issue                                       |
-|---------------|---------------------------------------------|
-| `/**/`        | Invalid syntax in GitLab globbing           |
-| `/*.html`     | Only matches `.html` files at the root      |
-| `/*`          | Only matches top-level files/folders        |
 
 ---
 

@@ -262,7 +262,140 @@ Executes a system command or Java class.
 
 👉 **Use it when:** Custom build tasks or setup scripts.
 
- ---
+
+---
+In Maven, command-line flags (options) allow you to customize the behavior of the build process. Two commonly used flags are `-D` and `-P`
+---
+
+## 🔹 `-D` (Define a system property or user property)
+
+Used to set a **system property** or **user property** for Maven or the build process.
+
+### ✅ Syntax:
+
+```bash
+mvn clean install -DpropertyName=propertyValue
+```
+
+### ✅ Common examples:
+
+* Set the Maven build to use a specific environment:
+
+  ```bash
+  mvn package -Denvironment=production
+  ```
+* Run tests selectively:
+
+  ```bash
+  mvn test -Dtest=MyTestClass
+  ```
+* Skip tests during build:
+
+  ```bash
+  mvn install -DskipTests
+  ```
+
+**Note:** These properties can be accessed in your `pom.xml` using `${propertyName}`.
+
+---
+
+## 🔹 `-P` (Activate Maven profile)
+
+Used to activate one or more **build profiles** defined in your `pom.xml` or `settings.xml`.
+
+### ✅ Syntax:
+
+```bash
+mvn install -Pprofile1,profile2
+```
+
+### ✅ Example:
+
+```bash
+mvn deploy -Pproduction
+```
+
+A profile may contain custom build configurations, dependencies, plugins, etc., tailored to a specific environment like `dev`, `staging`, or `prod`.
+
+---
+
+## 🔹 Other Common Maven Flags
+
+### ✅ `-f` (Specify the POM file)
+
+Run Maven using a custom `pom.xml` file.
+
+```bash
+mvn -f path/to/other-pom.xml clean install
+```
+
+---
+
+### ✅ `-X` (Debug output)
+
+Shows **debug-level logs** for troubleshooting Maven builds.
+
+```bash
+mvn clean install -X
+```
+
+---
+
+### ✅ `-e` (Show exception stack traces)
+
+Prints the **full stack trace** of errors if the build fails.
+
+```bash
+mvn clean install -e
+```
+
+---
+
+### ✅ `-B` (Batch mode)
+
+Used in **CI/CD scripts** to disable interactive prompts.
+
+```bash
+mvn clean install -B
+```
+
+---
+
+### ✅ `-U` (Force update of snapshots)
+
+Forces Maven to check **remote repositories** for updated SNAPSHOT versions.
+
+```bash
+mvn clean install -U
+```
+
+---
+
+### ✅ `-T` (Parallel builds)
+
+Enables **parallel build execution**.
+
+```bash
+mvn clean install -T 4    # Use 4 threads
+mvn clean install -T 1C   # Use 1 thread per CPU core
+```
+
+---
+
+## 📝 Summary Table
+
+| Flag          | Purpose                      |
+| ------------- | ---------------------------- |
+| `-Dkey=value` | Define a property            |
+| `-Pprofile`   | Activate build profile       |
+| `-f`          | Use specific POM file        |
+| `-X`          | Debug logging                |
+| `-e`          | Show stack traces            |
+| `-B`          | Batch mode (non-interactive) |
+| `-U`          | Update snapshot dependencies |
+| `-T`          | Parallel builds              |
+
+---
 
 ### 🐳 Maven in CI/CD & Docker Workflows
 
@@ -289,3 +422,6 @@ CMD ["java", "-jar", "/app.jar"]
 ```
 
 👉 **Use it when:** Creating efficient, production-ready containers.
+
+
+

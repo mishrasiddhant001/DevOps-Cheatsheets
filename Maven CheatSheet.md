@@ -170,7 +170,7 @@ Runs builds using 4 threads.
 
 👉 **Use it when:** Speeding up builds in large/multi-module projects.
 
- 
+ ---
 
 ### 🚀 DevOps & Advanced Maven Commands
 

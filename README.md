@@ -30,11 +30,9 @@ Welcome to the **Cheatsheets** repository! This repo provides a collection of **
 * 📏 [Increase Swapfile Storage](Increase%20swapfile%20storage.md)
 
 ### 🌐 Web Server Configurations
-
-* ⚙️ [PHPMyAdmin Configuration](phpmyadmin_conf.md)
 * 🛠️ [Nginx conf for Admin Panel in Php (Laravel)](Nginx%20conf%20for%20Admin%20Panel%20in%20Php%28%20Laravel%20%29.md)
 * 🔐 [Nginx Configuration for Secure React App Hosting](Nginx%20Configuration%20for%20Secure%20React%20App%20Hosting.md)
-* 📜 [Explanation of Nginx Configuration (Laravel)](Expalnation%20of%20nginx%20configuration%20%28laravel%29%20.md)
+* 📜 [Explanation of Nginx Configuration and PhpMyAdmin(Laravel)](Expalnation%20of%20nginx%20configuration%20%28laravel%29%20.md)
 
 ---
 

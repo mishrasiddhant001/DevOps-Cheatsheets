@@ -17,7 +17,11 @@
   ```bash
   git config --global color.ui auto
   ```
-
+### **Clone Using Pat Token 🪙**
+  ```bash
+  git clone https://<Pat-Toekn>@github.com/username/repo.git
+  ```
+  
 ### 2. **Initializing Repositories ⚙️**
 
 * **Initialize a new Git repository**:

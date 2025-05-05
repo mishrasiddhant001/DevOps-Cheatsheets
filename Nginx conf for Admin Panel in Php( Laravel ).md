@@ -136,9 +136,7 @@ server {
 
 ---
 Full Code for Nginx Configuration 📜
-nginx
-Copy
-Edit
+```
 server {
     listen 80; 
     server_name site.com;
@@ -183,7 +181,7 @@ server {
         deny all;
     }
 }
-
+```
 ### 🚀 **What's Next?**
 
 1. **Test the configuration** using `nginx -t` to ensure there are no errors.

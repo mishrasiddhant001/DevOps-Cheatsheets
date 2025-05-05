@@ -10,12 +10,12 @@ This script automates the process of performing a **rolling update** for a Docke
 #!/bin/bash
 
 ## Set variables
-NEW_CONTAINER_NAME="rediscover_new"  # Temporary container name for the update
-FINAL_CONTAINER_NAME="rediscover"    # Final container name for production
+NEW_CONTAINER_NAME="app_new"  # Temporary container name for the update
+FINAL_CONTAINER_NAME="app"    # Final container name for production
 TEMP_PORT=3001                       # Temporary port for the new container
 FINAL_PORT=3000                      # Final port for the production container
-TEMP_IMAGE_NAME="rediscover_temp"    # Temporary image name for the build
-IMAGE_NAME="rediscover"              # Production image name
+TEMP_IMAGE_NAME="app_temp"    # Temporary image name for the build
+IMAGE_NAME="app"              # Production image name
 ```
 
 ---
@@ -104,10 +104,10 @@ docker run -d --name ${FINAL_CONTAINER_NAME} -p ${FINAL_PORT}:80 ${TEMP_IMAGE_NA
 
 Optionally, we can **prune unnecessary images** and **clean up stopped containers** and unused networks to keep the system tidy.
 
-1. Keep specific images (e.g., `rediscover`) for faster future builds:
+1. Keep specific images (e.g., `app`) for faster future builds:
 
    ```bash
-   docker image prune -f --filter "label!=rediscover"
+   docker image prune -f --filter "label!=app"
    ```
 
 2. Clean up stopped containers and unused networks:

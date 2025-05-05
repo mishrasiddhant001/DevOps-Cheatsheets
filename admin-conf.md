@@ -1,8 +1,8 @@
 ---
 
-# Nginx Configuration for `murmur.admin.tvidservices.com`
+# Nginx Configuration for `admin.com`
 
-This document provides a detailed explanation of the Nginx configuration for the `murmur.admin.tvidservices.com` server. The configuration is designed to serve a web application (likely an admin interface) with PHP support, enforce HTTPS for secure communication, and include access to phpMyAdmin. It consists of two `server` blocks: one for redirecting HTTP traffic to HTTPS and another for handling HTTPS requests.
+This document provides a detailed explanation of the Nginx configuration server. The configuration is designed to serve a web application with PHP support, enforce HTTPS for secure communication, and include access to phpMyAdmin. It consists of two `server` blocks: one for redirecting HTTP traffic to HTTPS and another for handling HTTPS requests.
 
 ---
 
@@ -37,7 +37,7 @@ This setup ensures that all traffic is encrypted and provides a secure environme
 ```nginx
 server {
     listen 80;
-    server_name murmur.admin.tvidservices.com;
+    server_name admin.com;
 
     # Redirect HTTP to HTTPS
     return 301 https://$host$request_uri;
@@ -46,7 +46,7 @@ server {
 
 ### Explanation
 - **`listen 80`**: Configures the server to listen on port 80, the standard port for HTTP traffic.
-- **`server_name murmur.admin.tvidservices.com`**: Specifies that this block applies to requests for the domain `murmur.admin.tvidservices.com`.
+- **`server_name admin.com`**: Specifies that this block applies to requests for the domain `admin.com`.
 - **`return 301 https://$host$request_uri`**: Issues a 301 (permanent) redirect to the HTTPS version of the requested URL. The `$host` variable preserves the domain name, and `$request_uri` appends the original request path and query string. This enforces HTTPS for all traffic.
 
 ---
@@ -56,7 +56,7 @@ server {
 ```nginx
 server {
     listen 443 ssl;
-    server_name murmur.admin.tvidservices.com;
+    server_name admin.com;
 
     ssl_certificate /path/to/fullchain.pem;
     ssl_certificate_key /path/to/privkey.pem;
@@ -163,7 +163,7 @@ location /phpmyadmin {
   - IP whitelisting or basic authentication for `/phpmyadmin` to restrict access.
   - Updated SSL parameters in `snippets/ssl-params.conf` to enforce modern security standards.
 
-This configuration ensures that `murmur.admin.tvidservices.com` securely serves a PHP-based web application over HTTPS, with proper PHP processing and access to phpMyAdmin for database administration.
+This configuration ensures that `admin.com` securely serves a PHP-based web application over HTTPS, with proper PHP processing and access to phpMyAdmin for database administration.
 
 --- 
 
@@ -172,7 +172,7 @@ This configuration ensures that `murmur.admin.tvidservices.com` securely serves 
 ubuntu@ip-172-31-44-119:/etc/nginx$ cat sites-enabled/murmur-admin.conf
 server {
     listen 80;
-    server_name murmur.admin.tvidservices.com;
+    server_name admin.com;
 
     # Redirect HTTP to HTTPS
     return 301 https://$host$request_uri;
@@ -181,10 +181,10 @@ server {
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name murmur.admin.tvidservices.com;
+    server_name admin.com;
 
-    ssl_certificate /etc/letsencrypt/live/murmur.admin.tvidservices.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/murmur.admin.tvidservices.com/privkey.pem; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/admin.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/admin.com/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 

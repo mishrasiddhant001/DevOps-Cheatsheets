@@ -1,6 +1,6 @@
 ## 🛠️ Maven Commands Guide
 
-This document provides a friendly yet comprehensive overview of essential and advanced Maven commands, tailored for developers and DevOps engineers. Each command comes with icons, clear explanations, and practical use cases to help you become more efficient and confident with Maven.
+This document provides a friendly yet comprehensive overview of essential and advanced Maven commands, tailored for DevOps engineers.
 
  
 

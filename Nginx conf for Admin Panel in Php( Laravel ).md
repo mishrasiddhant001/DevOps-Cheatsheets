@@ -155,7 +155,7 @@ server {
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/nginx/ssl/dhparam.pem;
 
-    root /var/www/html/MurMur/public;  # Website Root Directory
+    root /var/www/html/Admin/public;  # Website Root Directory
     index index.php index.html index.htm;
 
     # PHPMyAdmin Configuration (optional)

@@ -3,7 +3,7 @@
 This document provides a friendly yet comprehensive overview of essential and advanced Maven commands, tailored for DevOps engineers.
 
  
-
+---
 ### 🔹 Basic Maven Commands
 
 #### 🧹 `mvn clean`
@@ -108,7 +108,7 @@ Runs all verification steps like integration tests.
 
 👉 **Use it when:** You want a final check before packaging or deploying.
 
- 
+ ---
 
 ### 💻 Maven CLI Options
 
@@ -262,7 +262,7 @@ Executes a system command or Java class.
 
 👉 **Use it when:** Custom build tasks or setup scripts.
 
- 
+ ---
 
 ### 🐳 Maven in CI/CD & Docker Workflows
 

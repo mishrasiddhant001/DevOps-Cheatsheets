@@ -1,188 +1,192 @@
-# Docker Cheatsheet
+# 🐳 Docker Cheatsheet
 
-This cheatsheet provides a collection of commonly used docker commands.
-
-## Getting Started
-
-The getting started guide on Docker has detailed instructions for setting up [Docker].
-
-After setup is complete, run the following commands to verify the success of installation:
-
-### _PLEASE NOTE POST INSTALLATION STEPS BELOW IF YOU HAVE TO PREPEND SUDO TO EVERY COMMAND_
-
-* **docker version** - provides full description of docker version
-* **docker info** - display system wide information
-* **docker -v** - provides a short description of docker version
-* **docker run hello-world** - pull hello-world container from registry and run it
-
-Have a look at the [free training] offered by Docker.
-
-Have a look at the [repository] of images offered by Docker.
-
-### Optional Post Installation Steps
-
-To create the docker group and add your user:
-
-* Create the docker group
-
-  ```bash
-  sudo groupadd docker
-  ```
-
-* Add your user to the docker group
-
-  ```bash
-  sudo usermod -aG docker $USER
-  ```
-
-* Log out and log back in so that your group membership is re-evaluated.
-* Verify that you can run docker commands without sudo.
+This cheatsheet is a quick reference to help you with the most commonly used Docker commands. Happy Docker-ing! 🚀
 
 ---
 
-## Docker Commands
+## 🚀 Getting Started
 
-### Get docker info
+Before jumping into Docker commands, make sure you have Docker set up. You can follow the [official Docker guide](https://docs.docker.com/engine/installation/) for installation instructions. Once installed, use the following commands to check if Docker is working properly:
 
-#### General
+### 📝 *Post Installation Notes*:
 
-Command | Description
---- | ---
-docker version | provides full description of docker version
-docker -v | provides a short description of docker version
-docker info | display system wide information
-docker info --format '{{.DriverStatus}}' | display 'DriverStatus' fragment from docker information
-docker info --format '{{json .DriverStatus}}' | display 'DriverStatus' fragment from docker information in JSON format
+If you need to prepend `sudo` to every command, follow the optional steps below.
 
-### Manage Images
+* **Check Docker version**
+  `docker version` - Displays full description of Docker version.
 
-Command | Description
---- | ---
-docker image ls | shows all local images
-docker image ls --filter 'reference=ubuntu:16.04' | show images filtered by name and tag
-docker image pull [image-name] | pull specified image from registry
-docker image rm [image-name] | remove image for specified _image-name_
-docker image rm [image-id] | remove image for specified _image-id_
-docker image prune | remove unused images
+* **System Information**
+  `docker info` - Displays system-wide Docker info.
 
-### Search Images
+* **Short Version Info**
+  `docker -v` - Gives a brief version description.
 
-Command | Description
---- | ---
-docker search [image-name] --filter "is-official=true" | find only official images having *[image-name]*
-docker search [image-name] -- filter "stars=1000" | find only images having specified *[image-name]* and 1000 or more stars
+* **Run a Test Container**
+  `docker run hello-world` - Runs a test container.
 
-### Manage Containers
+### 🔧 Post Installation Steps (Optional)
+
+To use Docker without `sudo`:
+
+1. **Create the Docker group**:
+
+   ```bash
+   sudo groupadd docker
+   ```
+
+2. **Add your user to the Docker group**:
+
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
+
+3. **Log out and back in** to re-evaluate group membership.
+
+4. **Verify without sudo**:
+   Run Docker commands without needing `sudo`.
+
+---
+
+## 📦 Docker Commands
+
+### 🧐 **Get Docker Info**
+
+| Command                                         | Description                            |
+| ----------------------------------------------- | -------------------------------------- |
+| `docker version`                                | Shows full version info.               |
+| `docker -v`                                     | Short version description.             |
+| `docker info`                                   | Displays system-wide info.             |
+| `docker info --format '{{.DriverStatus}}'`      | Displays driver status.                |
+| `docker info --format '{{json .DriverStatus}}'` | Displays driver status in JSON format. |
+
+---
+
+### 🖼️ **Manage Docker Images**
+
+| Command                                             | Description                         |
+| --------------------------------------------------- | ----------------------------------- |
+| `docker image ls`                                   | List all local images.              |
+| `docker image ls --filter 'reference=ubuntu:16.04'` | Filter images by name and tag.      |
+| `docker image pull [image-name]`                    | Pull specified image from registry. |
+| `docker image rm [image-name]`                      | Remove an image by name.            |
+| `docker image prune`                                | Remove unused images.               |
+
+---
+
+### 🔍 **Search Docker Images**
+
+| Command                                                  | Description                   |
+| -------------------------------------------------------- | ----------------------------- |
+| `docker search [image-name] --filter "is-official=true"` | Find official images.         |
+| `docker search [image-name] --filter "stars=1000"`       | Find images with 1000+ stars. |
+
+---
+
+### 🛠️ **Manage Docker Containers**
 
 #### Display Container Information
 
-Command | Description
---- | ---
-docker container ls | show all running containers
-docker container ls -a | show all containers regardless of state
-docker container ls --filter "status=exited" --filter "ancestor=ubuntu" | show all container instances of the ubuntu image that have exited
-docker container inspect [container-name] | display detailed information about specified container
-docker container inspect --format '{{.NetworkSettings.IPAddress}}' [container-name] | display detailed information about specified container using specified format
-docker container inspect --format '{{json .NetworkSettings}}' [container-name] | display detailed information about specified container using specified format
+| Command                                                                               | Description                              |
+| ------------------------------------------------------------------------------------- | ---------------------------------------- |
+| `docker container ls`                                                                 | List all running containers.             |
+| `docker container ls -a`                                                              | Show all containers regardless of state. |
+| `docker container ls --filter "status=exited"`                                        | Show exited containers.                  |
+| `docker container inspect [container-name]`                                           | Display detailed container info.         |
+| `docker container inspect --format '{{.NetworkSettings.IPAddress}}' [container-name]` | Show IP address of the container.        |
 
-#### Run Container
+#### Running Containers
 
-Command | Description
---- | ---
-docker container run [image-name] | run container based on specified image
-docker container run --rm [image-name] | run container based on specified imaged and immediately remove it once it stops
-docker container run --name fuzzy-box [image-name] | assign name and run container based on specified image
+| Command                                                     | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `docker container run [image-name]`                         | Run a container from an image.                              |
+| `docker container run --rm [image-name]`                    | Run and automatically remove the container after execution. |
+| `docker container run --name [container-name] [image-name]` | Assign a custom name to your container.                     |
 
-#### Remove Container
+#### Remove Containers
 
-Command | Description
---- | ---
-docker container rm [container-name] | remove specified container
-docker container rm $(docker container ls --filter "status=exited" --filter "ancestor=ubuntu" -q) | remove all containers whose id's are returned from *'$(...)'* list
-
-### Manage Volumes
-
-#### Display Volume Information
-
-Command | Description
---- | ---
-docker volume ls | show all volumes
-docker volume ls --filter "dangling=true" | display all volumes not referenced by any containers
-docker volume inspect [volume-name] | display detailed information on *[volume-name]*
-
-#### Remove Volumes
-
-Command | Description
---- | ---
-docker volume rm [volume-name] | remove specified volume
-docker volume rm $(docker volume ls --filter "dangling=true" -q) | remove all volumes having an id equal to any of the id's returned from *'$(...)'* list
+| Command                                                                  | Description                   |
+| ------------------------------------------------------------------------ | ----------------------------- |
+| `docker container rm [container-name]`                                   | Remove the container by name. |
+| `docker container rm $(docker container ls --filter "status=exited" -q)` | Remove all exited containers. |
 
 ---
 
-## Running containers
+### 💾 **Manage Volumes**
 
-### Run hello-world container
+#### Volume Information
 
-```docker
+| Command                                     | Description             |
+| ------------------------------------------- | ----------------------- |
+| `docker volume ls`                          | List all volumes.       |
+| `docker volume ls --filter "dangling=true"` | List unused volumes.    |
+| `docker volume inspect [volume-name]`       | Display volume details. |
+
+#### Remove Volumes
+
+| Command                                                            | Description                |
+| ------------------------------------------------------------------ | -------------------------- |
+| `docker volume rm [volume-name]`                                   | Remove a specified volume. |
+| `docker volume rm $(docker volume ls --filter "dangling=true" -q)` | Remove unused volumes.     |
+
+---
+
+## 🏃‍♂️ Running Containers
+
+### 🐋 Run a Hello-World Container
+
+```bash
 docker run hello-world
 ```
 
-### Run an [Alpine Linux] container (a lightweight linux distribution)
+### 🔥 Run an Alpine Linux Container (Lightweight!)
 
-1. Find image and display brief summary
+1. Find and display the Alpine image:
 
-   ```docker
+   ```bash
    docker search alpine --filter=stars=1000 --no-trunc
    ```
 
-1. Fetch alpine image from Docker registry and save it
+2. Pull the Alpine image:
 
-   ```docker
+   ```bash
    docker pull alpine
    ```
 
-1. Display list of local images
+3. List your local images:
 
-   ```docker
+   ```bash
    docker image ls
    ```
 
-1. List container contents using _listing_ format
+4. List contents of the Alpine container:
 
-   ```docker
+   ```bash
    docker run alpine ls -l
    ```
 
-1. Print message from container
+5. Print a message from Alpine:
 
-   ```docker
+   ```bash
    docker run alpine echo "Hello from Alpine!"
    ```
 
-1. Running the run command with the -it flags attaches container to an interactive tty
+6. Run Alpine interactively with a shell:
 
-   ```docker
+   ```bash
    docker run -it alpine bin/sh
    ```
 
-### Run MongoDB
+---
 
-#### Run MongoDB Using Named Volume
+### 🐱 Run MongoDB
 
-To run a new MongoDB container, execute the following command from the CLI:
+#### MongoDB with Named Volume
 
-```docker
+```bash
 docker run --rm --name mongo-dev -v mongo-dev-db:/data/db -d mongo
 ```
 
-CLI Command | Description
---- | ---
---rm | remove container when stopped
---name mongo-dev | give container a custom name
--v mongo-dev-db/data/db | map the container volume 'data/db' to a custom name 'mongo-dev-db'
--d mongo | run mongo container as a daemon in the background
-
-#### Run MongoDB Using Bind Mount
+#### MongoDB with Bind Mount
 
 ```bash
 cd
@@ -190,100 +194,78 @@ mkdir -p mongodb/data/db
 docker run --rm --name mongo-dev -v ~/mongodb/data/db:/data/db -d mongo
 ```
 
-CLI Command | Description
---- | ---
---rm | remove container when stopped
---name mongo-dev | give container a custom name
--v ~/mongodb/data/db/data/db | map the container volume 'data/db' to a bind mount '~/mongodb/data/db'
--d mongo | run mongo container as a daemon in the background
+#### Access MongoDB
 
-### Access MongoDB
-
-#### Connect to MongoDb
-
-There are 2 steps to accessing the MongoDB shell.
-
-1. Firstly, access the MongoDB container shell by executing the following command:
+1. **Connect to MongoDB container**:
 
    ```bash
    docker exec -it mongo-dev bash
    ```
 
-   This will open an interactive shell (bash) on the MongoDB container.
-
-1. Secondly, once inside the container shell, access the MongoDB shell by executing the following command:
+2. **Open MongoDB shell**:
 
    ```bash
    mongo localhost
    ```
 
-#### Show Databases
+3. **Show Databases**:
 
-Once connected to MongoDB shell, run the following command to show a list of databases:
+   ```bash
+   show dbs
+   ```
 
-```bash
-show dbs
-```
+4. **Create a New Database**:
 
-#### Create New Database
-
-Create a new database and collection
-
-```javascript
-use test
-db.messages.insert({"message": "Hello World!"})
-db.messages.find()
-```
+   ```javascript
+   use test
+   db.messages.insert({"message": "Hello World!"})
+   db.messages.find()
+   ```
 
 ---
 
-## Creating Images
+## 📸 Creating Custom Images
 
-### Create custom [Alpine Linux] image with GIT setup
+### 🐏 Alpine Linux with Git
 
-1. Create project folder with empty Dockerfile
+1. Create project folder and Dockerfile:
 
    ```bash
-   cd ~
    mkdir -p projects/docker/alpine-git
-   cd !$
+   cd projects/docker/alpine-git
    touch Dockerfile
    ```
 
-1. Create Dockerfile
+2. Create your `Dockerfile`:
 
    ```docker
    FROM alpine:latest
-
-   LABEL author="codesaucerer" \
-         description="Official Alpine image with GIT and VIM installed"
-
-   ENV WORKING_DIRECTORY=/projects
-
+   LABEL author="your-name" description="Alpine with Git & Vim"
    RUN apk update && apk add git vim
-
-   RUN mkdir $WORKING_DIRECTORY
-
-   WORKDIR $WORKING_DIRECTORY
+   WORKDIR /projects
    ```
 
-1. Build Dockerfile
+3. Build and run the image:
 
    ```bash
-   docker image build -t [docker-username]/alpine-git
-   docker run --rm -it [docker-username]/alpine-git /bin/sh
+   docker image build -t [your-username]/alpine-git .
+   docker run --rm -it [your-username]/alpine-git /bin/sh
    ```
 
-1. Push Dockerfile
+4. Push to Docker Hub:
 
    ```bash
    docker login
-   docker push [docker-username]/alpine-git:latest
+   docker push [your-username]/alpine-git:latest
    ```
 
 ---
 
-[Docker]:https://docs.docker.com/engine/installation/
-[free training]: https://training.docker.com
-[repository]: https://hubs.docker.com
-[Alpine Linux]: http://www.alpinelinux.org/
+🎓 **Additional Resources**
+For more information and tutorials, check out:
+
+* [Docker Documentation](https://docs.docker.com/engine/installation/)
+* [Free Docker Training](https://training.docker.com)
+* [Docker Hub Repository](https://hubs.docker.com)
+
+---

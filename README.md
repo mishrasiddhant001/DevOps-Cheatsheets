@@ -16,44 +16,34 @@ Welcome to the **Cheatsheets** repository! This repository contains a collection
 
 ## Cheatsheets
 
-### Docker Cheatsheet
-- **File**: [Docker cheatsheet.md](Docker%20cheatsheet.md)
+### [Docker Cheatsheet](Docker%20cheatsheet.md)
 - A quick reference for Docker commands and usage.
 
-### Jenkins CI/CD Pipeline Flow
-- **File**: [Jenkins ci-cd pipeline flow.md](Jenkins%20ci-cd%20pipeline%20flow.md)
+### [Jenkins CI/CD Pipeline Flow](Jenkins%20ci-cd%20pipeline%20flow.md)
 - A visual flow of the CI/CD pipeline in Jenkins and how it integrates with different stages.
 
-### Increase Storage in Swapfile
-- **File**: [Increase storage in a swapfile.md](Increase%20storage%20in%20a%20swapfile.md)
+### [Increase Storage in Swapfile](Increase%20storage%20in%20a%20swapfile.md)
 - Steps to create and increase storage space in a Linux swapfile.
 
-### Git Cheatsheet
-- **File**: [git_cheatsheet.sh](git_cheatsheet.sh)
+### [Git Cheatsheet](git_cheatsheet.sh)
 - A script containing Git commands and shortcuts for version control.
 
-### Linux Cheatsheet
-- **File**: [linux_cheatsheet.sh](linux_cheatsheet.sh)
+### [Linux Cheatsheet](linux_cheatsheet.sh)
 - Commonly used Linux commands and system administration tips.
 
-### Maven Cheatsheet
-- **File**: [maven.md](maven.md)
+### [Maven Cheatsheet](maven.md)
 - A quick guide for Maven commands and usage in Java projects.
 
-### PHPMyAdmin Configuration
-- **File**: [phpmyadmin_conf.md](phpmyadmin_conf.md)
+### [PHPMyAdmin Configuration](phpmyadmin_conf.md)
 - Configuration steps for setting up PHPMyAdmin.
 
-### Regex Cheatsheet
-- **File**: [regex-cheatsheet.md](regex-cheatsheet.md)
+### [Regex Cheatsheet](regex-cheatsheet.md)
 - A quick reference for regular expressions (regex) patterns and examples.
 
-### React Frontend Setup
-- **File**: [react-frontend.md](react-frontend.md)
+### [React Frontend Setup](react-frontend.md)
 - A guide for setting up a React-based frontend application.
 
-### Admin Panel Nginx Configuration
-- **File**: [admin panel nginx conf](admin%20panel%20nginx%20conf)
+### [Admin Panel Nginx Configuration](admin%20panel%20nginx%20conf)
 - Nginx configuration for setting up an admin panel for your app.
 
 ## How to Use

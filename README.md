@@ -16,12 +16,13 @@ Welcome to the **Cheatsheets** repository! This repo provides a collection of **
 * 🚀 [Zero Downtime Deployment using Docker](Zero%20Downtime%20Deployment%20using%20Docker.md)
 * 🐘 [Install and Setup Java, Jenkins, Docker, and Node](Install%20and%20Setup%20Java%2C%20jenkins%2C%20Docker%2C%20and%20Node.md)
 * 🧪 [Gitlab Artifacts Path](Gitlab%20Artifacts%20Path.md)
+* 🧪 [Gitlab Notes](Gitlab%20notes.md)
 * 📈 [Maven CheatSheet](Maven%20CheatSheet.md) | 📄 [Reference] [Jrebel](https://www.jrebel.com/blog/maven-cheat-sheet) | [DigitalOcean](https://www.digitalocean.com/community/tutorials/maven-commands-options-cheat-sheet) | [Maven Command Line Options](https://books.sonatype.com/mvnref-book/reference/running-sect-options.html) | [Flags](https://chatgpt.com/share/68188ac0-09e4-8010-8a62-a13c9a751239)
 
 ### 💻 Version Control & Regex
 
 * 🔀 [Git Cheatsheet](Git%20Cheatsheet.md)
-* 🧵 [Regex Cheatsheet](Regex%20Cheatsheet.md)
+* 🧵 [Regex Cheatsheet](Regex%20Cheatsheet.md) [Reference] [RE2](https://cran.r-project.org/web/packages/re2/vignettes/re2_syntax.html)
 
 ### 🐧 Linux & System Setup
 

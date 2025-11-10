@@ -12,7 +12,7 @@
 |                                | `docker run -it [imageName] /bin/bash`                            | Run container **interactively** with Bash shell                       |
 |                                | `docker run -it mcr.microsoft.com/powershell:nanoserver pwsh.exe` | Run a Windows NanoServer container with PowerShell                    |
 |                                | `docker run --name [containerName] [imageName]`                   | Assign a custom name to the container                                 |
-|                                | `docker run --publish 80:80 --name webserver nginx`               | Run Nginx container and map port 80 of host to 80 of container        |
+|                                | `docker run --publish 8080:80 --name webserver nginx`              | Run Nginx container and map port 8800 of host to 80 of container      |
 | ⚙️ **Resource Limits**         | `docker run --memory="256m" nginx`                                | Limit container memory to 256 MB                                      |
 |                                | `docker run --cpus=".5" nginx`                                    | Limit container CPU usage to 0.5 cores                                |
 | 🚀 **Container Lifecycle**     | `docker start [containerName]`                                    | Start a stopped container                                             |

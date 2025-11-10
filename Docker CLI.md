@@ -1,5 +1,3 @@
----
-
 ## 🐳 **Docker CLI Cheat Sheet**
 
 | **Category**                   | **Command**                                                       | **Description / Notes**                                               |
@@ -32,5 +30,3 @@
 | 🧹 **Cleanup**                 | `docker rm $(docker ps -aq)`                                      | Remove all stopped containers                                         |
 |                                | `docker rmi [imageName]`                                          | Remove an image                                                       |
 |                                | `docker system prune`                                             | Remove unused containers, images, and networks                        |
-
----

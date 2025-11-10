@@ -221,3 +221,195 @@ Now you can type commands inside the container — it behaves like an isolated L
 
 > `-it` = `--interactive --tty`
 > → Keeps STDIN open and gives you a real terminal experience inside the container.
+
+
+## 🧩 **`ps` — Process Status**
+
+### 🧠 **Full Form**
+
+> `ps` stands for **Process Status**
+
+
+### 🎯 **Purpose**
+
+Displays **information about running processes** on a Linux system (or inside a container).
+You can see what’s currently running, who owns it, and its resource usage.
+
+
+### ⚙️ **Basic Syntax**
+
+```bash
+ps [options]
+```
+
+
+### 🔍 **Common Options**
+
+| **Command**        | **Description / Use Case**                                          |                                                                  |
+| ------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `ps`               | Shows processes for the **current shell** only.                     |                                                                  |
+| `ps -f`            | **Full format** – shows UID, PID, PPID, start time, etc.            |                                                                  |
+| `ps -e` or `ps -A` | Shows **all processes** on the system.                              |                                                                  |
+| `ps -ef`           | **Every process (full)** – lists all system processes with details. |                                                                  |
+| `ps aux`           | BSD-style format – includes CPU, memory usage, and command.         |                                                                  |
+| `ps -u <user>`     | Shows processes started by a specific user.                         |                                                                  |
+| `ps -p <pid>`      | Shows details for a specific process ID.                            |                                                                  |
+| `ps --forest`      | Displays processes in a **tree structure** (visual hierarchy).      |                                                                  |
+| `ps -ef            | grep <proc>`                                                        | Find a specific running process (e.g., `nginx`, `python`, etc.). |
+
+
+### 📊 **Important Columns (in Output)**
+
+| **Column** | **Meaning**                      |
+| ---------- | -------------------------------- |
+| `UID`      | User who started the process     |
+| `PID`      | Process ID                       |
+| `PPID`     | Parent Process ID                |
+| `C`        | CPU utilization                  |
+| `STIME`    | Start time of process            |
+| `TTY`      | Terminal associated with process |
+| `TIME`     | Total CPU time used              |
+| `CMD`      | Command that started the process |
+
+
+### 💡 **Examples**
+
+```bash
+ps -ef | grep nginx
+```
+
+Output:
+
+```
+root       1     0  0 12:00 ?        00:00:00 nginx: master process /usr/sbin/nginx
+nginx     12     1  0 12:00 ?        00:00:00 nginx: worker process
+```
+
+**Interpretation:**
+
+* PID `1` → main Nginx master process (root)
+* PID `12` → worker process (nginx user)
+
+
+### 🐳 **Inside Docker Containers**
+
+| **Command**                                        | **Purpose**                                                   |
+| -------------------------------------------------- | ------------------------------------------------------------- |
+| `docker exec -it <container> ps -ef`               | List all running processes inside a container                 |
+| `docker exec -it <container> ps aux`               | Show detailed process usage (CPU, memory) inside container    |
+| `docker exec -it <container> ps -ef \| grep nginx` | Check if **nginx** or another service is running              |
+| `docker top <container>`                           | Show container process list (Docker-level equivalent of `ps`) |
+
+### 🧰 **Troubleshooting Tips**
+
+* If `ps` is missing:
+
+  ```bash
+  apt update && apt install -y procps
+  ```
+* To ignore your own `grep` line:
+
+  ```bash
+  ps -ef | grep -v grep | grep nginx  ```
+
+
+### ⚡ **Quick Use Cases**
+
+| **Command**                                | **Purpose** |                                   |
+| ------------------------------------------ | ----------- | --------------------------------- |
+| `ps aux --sort=-%cpu                       | head`       | Top 10 CPU-consuming processes    |
+| `ps aux --sort=-%mem                       | head`       | Top 10 memory-consuming processes |
+| `ps -o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head`       | Custom column view                |
+
+
+## 🐳 Example: Checking Processes in a Docker Container
+
+```bash
+PS C:\Users\mishr> docker run --detach --publish 8080:80 --name webserver nginx
+7acbcdabbc4b1ae11b9af3cf53150b02485d6afc6459eba01179a1e63db95a8a
+
+PS C:\Users\mishr> docker exec -it webserver /bin/bash
+root@7acbcdabbc4b:/# ps -ef
+bash: ps: command not found
+```
+
+> ❌ The `ps` command isn’t available by default in minimal containers.
+
+
+### 🧩 Installing `procps` (to get `ps`)
+
+```bash
+root@7acbcdabbc4b:/# apt update && apt install -y procps
+```
+
+> ✅ This installs the `procps` package which includes `ps`, `top`, `kill`, etc.
+>
+> You might see `debconf` warnings — ignore them; they’re harmless in Docker.
+
+
+### 🧠 Checking All Running Processes
+
+```bash
+root@7acbcdabbc4b:/# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 20:31 ?        00:00:00 nginx: master process nginx -g daemon off;
+nginx       29     1  0 20:31 ?        00:00:00 nginx: worker process
+nginx       30     1  0 20:31 ?        00:00:00 nginx: worker process
+...
+root        37     0  0 20:31 pts/0    00:00:00 /bin/bash
+root       166    37  0 20:32 pts/0    00:00:00 ps -ef
+```
+
+> ✅ NGINX master and worker processes are running successfully.
+> The `ps -ef` output shows parent-child relationships (`PPID`) and process ownership (`UID`).
+
+
+### 🔍 Filtering for NGINX Only
+
+```bash
+root@7acbcdabbc4b:/# ps -ef | grep nginx
+root         1     0  0 20:31 ?        00:00:00 nginx: master process nginx -g daemon off;
+nginx       29     1  0 20:31 ?        00:00:00 nginx: worker process
+...
+root       169    37  0 20:33 pts/0    00:00:00 grep nginx
+```
+
+> 💡 The last line (`grep nginx`) is just your search command — you can ignore it.
+>
+> Use `ps -ef | grep -v grep | grep nginx` to hide that line if you prefer.
+
+
+### 📊 Using BSD Format (`ps aux`)
+
+```bash
+root@7acbcdabbc4b:/# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1  14764  8876 ?        Ss   20:31   0:00 nginx: master process nginx -g daemon off;
+nginx       29  0.0  0.0  15220  3340 ?        S    20:31   0:00 nginx: worker process
+...
+root       170  0.0  0.0   6396  3624 pts/0    R+   20:35   0:00 ps aux
+```
+
+> 🧾 `ps aux` gives CPU (`%CPU`) and memory (`%MEM`) usage for each process — good for quick health checks inside containers.
+
+
+### 🧰 Docker-side Process View
+
+```bash
+PS C:\Users\mishr> docker top webserver
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                3451                3420                0                   20:31               ?                   00:00:00            nginx: master process nginx -g daemon off;
+systemd+            3476                3451                0                   20:31               ?                   00:00:00            nginx: worker process
+```
+
+> ⚙️ `docker top` shows processes from outside the container — similar to `ps` but without needing a shell inside.
+
+
+
+### 🏁 Clean Exit
+
+```bash
+root@7acbcdabbc4b:/# exit
+exit
+PS C:\Users\mishr>
+```

@@ -1,4 +1,4 @@
-## 🐳 **Docker CLI Cheat Sheet**
+## 🐳 ocker CLI Cheat Sheet
 
 | **Category**                   | **Command**                                                       | **Description / Notes**                                               |
 |  | -- |  |
@@ -32,8 +32,7 @@
 |                                | `docker system prune`                                             | Remove unused containers, images, and networks                        |
 
 
-
-## 🧽 **Docker Cleanup Commands (Detailed)**
+## 🧽 Docker Cleanup Commands (Detailed)
 
 | **Command**                    | **Description**                                 |
 |  | -- |

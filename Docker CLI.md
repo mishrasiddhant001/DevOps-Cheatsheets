@@ -33,7 +33,7 @@
 
 
 
-### 🧽 **Docker Cleanup Commands (Detailed)**
+## 🧽 **Docker Cleanup Commands (Detailed)**
 
 | **Command**                    | **Description**                                 |
 |  | -- |
@@ -44,8 +44,7 @@
 | `docker system prune -a`       | Removes all images not in use by any containers |
 
 
-
-### 🏗️ 1. Running Containers Interactively
+## 🏗️ 1. Running Containers Interactively
 
 * Command:
 
@@ -61,7 +60,7 @@
   exit
   ```
 
-### 🌐 2. Running Nginx in Detached Mode with Port Mapping
+## 🌐 2. Running Nginx in Detached Mode with Port Mapping
 
 * Command:
 
@@ -78,7 +77,7 @@
 * The favicon warning (`404 favicon.ico`) is normal — Nginx image doesn’t include one.
 
 
-### ⚠️ 3. Common Syntax Mistakes (and What They Teach You)
+## ⚠️ 3. Common Syntax Mistakes (and What They Teach You)
 
 | Mistake                                                        | What Went Wrong                                    | Lesson                                                           |
 | -- | -- | - |
@@ -90,7 +89,7 @@
 | Fix: `docker rm webserver`                                     | Remove old container before recreating it          |                                                                  |
 
 
-### 🧩 4. Executing Commands Inside Running Containers
+## 🧩 4. Executing Commands Inside Running Containers
 
 * Correct command:
 
@@ -107,7 +106,7 @@
 
 
 
-### 🪟 5. Running Windows Containers (and Why It Failed)
+## 🪟 5. Running Windows Containers (and Why It Failed)
 
 * Tried:
 
@@ -127,7 +126,7 @@
   🧩 *Linux vs Windows containers are mutually exclusive modes.*
 
 
-### 🧹 6. Container Lifecycle Recap
+## 🧹 6. Container Lifecycle Recap
 
 | Action                   | Command                  | Notes                               |
 |  |  | -- |
@@ -141,7 +140,7 @@
 
 
 
-### 🧭 7. Key Concepts Reinforced
+## 🧭 7. Key Concepts Reinforced
 
 * Containers are **ephemeral** — exiting the shell doesn’t delete them.
 * Names (`--name`) make containers easy to reference.
@@ -177,7 +176,7 @@ So together:
 It’s what makes the container behave like a normal shell session instead of just running in the background.
 
 
-### 🧠 Example Breakdown
+## 🧠 Example Breakdown
 
 **Without `-it`:**
 
@@ -203,14 +202,14 @@ root@abcd1234:/#
 Now you can type commands inside the container — it behaves like an isolated Linux shell.
 
 
-### 🧱 Why `-it` Is Commonly Used
+## 🧱 Why `-it` Is Commonly Used
 
 * For **debugging** or exploring containers.
 * To test **configurations or files** inside containers.
 * To **inspect running environments** interactively (e.g., check `/etc/nginx/nginx.conf`).
 
 
-### ⚙️ Common Pairs with `-it`
+## ⚙️ Common Pairs with `-it`
 
 | Command                               | Purpose                                    |
 | ------------------------------------- | ------------------------------------------ |
@@ -219,7 +218,7 @@ Now you can type commands inside the container — it behaves like an isolated L
 | `docker run -it alpine sh`            | Use Alpine’s lightweight shell             |
 
 
-### In Summary:
+## In Summary:
 
 > `-it` = `--interactive --tty`
 > → Keeps STDIN open and gives you a real terminal experience inside the container.

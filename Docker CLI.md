@@ -1,7 +1,6 @@
 ## 🐳 ocker CLI Cheat Sheet
 
 | **Category**                   | **Command**                                                       | **Description / Notes**                                               |
-|  | -- |  |
 | 🔍 **Info & Version**          | `docker info`                                                     | Display system-wide Docker information                                |
 |                                | `docker version`                                                  | Display Docker client and server version                              |
 | 🔐 **Registry & Images**       | `docker login`                                                    | Log in to a Docker registry (e.g., Docker Hub)                        |

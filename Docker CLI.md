@@ -30,8 +30,16 @@
 | 🧹 **Cleanup**                 | `docker rm $(docker ps -aq)`                                      | Remove all stopped containers                                         |
 |                                | `docker rmi [imageName]`                                          | Remove an image                                                       |
 |                                | `docker system prune`                                             | Remove unused containers, images, and networks                        |
-| 🐳 Docker Cleanup Commands    | `docker rm [containerName]`                                        | Removes stopped containers                      |
-                                | `docker rm $(docker ps -a -q)`                                        | Removes all stopped containers                  |
-                                | `docker images`                | Lists images                                    |
-                                | `docker rmi [imageName]`       | **Deletes the image**                           |
-                                | `docker system prune -a`       | Removes all images not in use by any containers |
+
+---
+
+### 🧽 **Docker Cleanup Commands (Detailed)**
+
+| **Command**                    | **Description**                                 |
+| ------------------------------ | ----------------------------------------------- |
+| `docker rm [containerName]`    | Removes stopped containers                      |
+| `docker rm $(docker ps -a -q)` | Removes all stopped containers                  |
+| `docker images`                | Lists images                                    |
+| `docker rmi [imageName]`       | **Deletes the image**                           |
+| `docker system prune -a`       | Removes all images not in use by any containers |
+
